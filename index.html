@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced JS Modules Example</title>
+</head>
+
+<body>
+
+  <script type="module">
+
+    import { Product } from './modules/products.js';
+    import { Cart } from './modules/cart.js';
+    import { handleError } from './modules/utils.js';
+
+    try {
+
+      const laptop = new Product(1, "Laptop", 1200);
+      const phone = new Product(2, "Phone", 1200);
+      const tablet = new Product(3, "Tablet", 1200);
+
+      const cart = new Cart();
+
+      cart.addProduct(laptop);
+      cart.addProduct(phone);
+      cart.addProduct(tablet);
+
+      console.log("==========================");
+
+      cart.getCartSummary();
+
+      console.log("==========================");
+
+      cart.getTotalPrice();
+
+      console.log("==========================");
+
+      cart.removeProduct(1);
+
+      console.log("==========================");
+
+      cart.getCartSummary();
+
+      console.log("==========================");
+
+      cart.getTotalPrice();
+
+    } catch (error) {
+      console.error("An unexpected error occurred", error.message)
+    }
+
+
+    // import { getProducts } from "./modules/products.js";
+    // import { addToCart, getCart, getTotal } from "./modules/cart.js";
+    // import { formatPrice } from "./modules/utils.js";
+
+    // console.log("Available Products:");
+    // const products = getProducts();
+    // products.forEach(product => {
+    //   console.log(`${product.name}: ${formatPrice(product.price)}`);
+    // });
+
+    // console.log("========================")
+
+    // addToCart(1);
+    // addToCart(3);
+    // addToCart(4);
+
+
+    // console.log("========================")
+
+    // console.log("Cart:");
+    // getCart().forEach(item => {
+    //   console.log(`${item.name}: ${formatPrice(item.price)}`);
+    // });
+
+    // console.log("========================")
+
+    // console.log(`\nTotal Price: ${formatPrice(getTotal())}`);
+
+
+  </script>
+
+</body>
+
+</html>
